@@ -19,7 +19,7 @@ $(document).ready(function () {
             newButton.on("click", function () {
                 var apikey = "VWuNi5tVha38LEi7NRZD21gojDjQ5wyQ";
                 //var limit = 5;
-                var queryUrl = "http://api.giphy.com/v1/gifs/search?q=" + buttonName + "&api_key=" + apikey; // + "&limit=" + limit
+                var queryUrl = "https://api.giphy.com/v1/gifs/search?q=" + buttonName + "&api_key=" + apikey; // + "&limit=" + limit
                 console.log(queryUrl);
                 $.ajax({
                     url: queryUrl,
