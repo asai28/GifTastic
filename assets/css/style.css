@@ -1,0 +1,43 @@
+#image{
+    height: 200px;
+    width: 200px;
+    margin: 5px 5px;
+    border: solid black 2px;
+    /* margin-left: 20px; */
+    
+}
+
+#imageContainer{
+    margin: 20px 10px;
+    border: solid black 1px;
+    width: 250px;
+    align-content: justify;
+    float: left;
+    font-family: 'Noto Sans', sans-serif;
+    text-align: center;
+}
+
+#buttonContainer{
+    margin: 10px 10px;
+    padding: 10px 10px;
+    background-color: lightgoldenrodyellow;
+}
+
+.btn{
+    margin: 5px 5px;
+}
+
+.form-group{
+    width: 25%;
+    float: right;
+    text-align: left;
+}
+
+#displayGIF{
+    width: 75%;
+    float : left;
+}
+
+#submit{
+    background-color: green; 
+}
