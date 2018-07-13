@@ -7,7 +7,11 @@
     
 }
 
-#imageContainer{
+body{
+    text-align: center;
+}
+
+.imageContainer{
     margin: 20px 10px;
     border: solid black 1px;
     width: 250px;
@@ -15,6 +19,7 @@
     float: left;
     font-family: 'Noto Sans', sans-serif;
     text-align: center;
+    background-color: aliceblue;
 }
 
 #buttonContainer{
@@ -32,6 +37,15 @@
     width: 25%;
     float: right;
     text-align: left;
+}
+
+#favourite{
+    width: 70%;
+    float : left;
+    background-color: lightpink; 
+    text-align: center;
+    margin-left:10px;
+    margin-right: 10px; 
 }
 
 #displayGIF{
