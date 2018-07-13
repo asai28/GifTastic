@@ -1,18 +1,19 @@
 $(document).ready(function () {
     var animals = ["dog", "cat", "rabbit", "hamster", "skunk", "goldfish", "bird", 'ferret', "turtle", "sugar glider", "chinchilla", "hedgehog", "hermit crab", "gerbil", "pygmy goat", "chicken", "capybara", "teacup pig", "serval", "salamander", "frog"];
-    animals.forEach(function (value, index) {
-        renderButtons(animals[index]);
+    animals.forEach(function (value) {
+        renderButtons(value);
     });
 
     $(".btn-primary").on("click", function (e) {
         e.preventDefault();
         $("#displayGIF").empty();
-        renderButtons($("#animalText").val());
-        
+        if (animals.indexOf($("#animalText").val()) === -1) {
+            renderButtons($("#animalText").val());
+        }
     });
 
     function renderButtons(buttonName) {
-        
+
         if (buttonName !== "") {
             var newButton = $("<button>");
             newButton.attr("data-value", buttonName);
@@ -30,6 +31,7 @@ $(document).ready(function () {
                     method: 'GET'
                 }).then(function (response) {
                     $("#displayGIF").empty();
+                    console.log(response);
                     for (var i = 0; i < response.data.length; ++i) {
                         //imageContainer contains the rating, favourite and gif
                         var imageContainer = $("<div>");
@@ -59,20 +61,20 @@ $(document).ready(function () {
                         $("#displayGIF").append(imageContainer);
                     }
                     $("#displayGIF .fa-heart").on("click", function () {
+                        console.log(this);
                         if ($(this).hasClass("far")) {
-                            console.log(true);
+                            var imageContainerClone = $(this).parent().clone("withDataAndEvents", true);
+                            imageContainerClone.find("i").remove();
+                            $("#favourite").append(imageContainerClone);
                             $(this).removeClass("far");
                             $(this).addClass("fas");
-                            addToFavourites($(this).parent());
-                            localStorage.setItem($(this).parent().attr("id"),JSON.stringify($(this).parent()));
                         }
                         else {
                             console.log(false);
                             $(this).removeClass("fas");
                             $(this).addClass("far");
-                            removeFromFavourites($(this).parent());
-                            var currentIndex = $(this).parent().attr("id");
-                            localStorage.removeItem(currentIndex);
+                            var imageContainerID = $(this).parent().attr("id");
+                            $("#favourite").find("#" + imageContainerID).remove();
                         }
                     });
                 });
@@ -80,16 +82,5 @@ $(document).ready(function () {
         }
     }
 });
-var imageContainerClone;
-function addToFavourites(imageContainer) {
-    imageContainerClone = imageContainer.clone("withDataAndEvents", true);
-    imageContainerClone.find("i").remove();
-    $("#favourite").append(imageContainerClone);
-}
 
-function removeFromFavourites(imageContainer) {
-    var imageContainerID = imageContainer.attr("id");
-    imageContainerClone.remove();
-    saveData();
-    $("#" + imageContainerID).find("i").removeClass("fas").addClass("far");
-}
+

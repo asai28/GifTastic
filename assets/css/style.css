@@ -48,6 +48,21 @@ body{
     margin-right: 10px; 
 }
 
+#next{
+    width: 70%;
+    float : left;
+    margin-left:10px;
+    margin-right: 10px;  
+}
+
+.fa-chevron-left{
+    float: left;
+}
+
+.fa-chevron-right{
+    float: right;
+}
+
 #displayGIF{
     width: 75%;
     float : left;
